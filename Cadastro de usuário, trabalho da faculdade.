@@ -1,0 +1,120 @@
+pessoa = {}
+lista_contatos = []
+id_global = 0
+#Função para cadastrar os contatos
+def cadastrar_contato(id_global = 0):
+    #Loop infinito para cadastrar o usuário, só sai desse loop se o usuário quiser
+    while(True):
+        print("==================Cadastro de contato==================")
+        #Serve para adiocionar valor as chaves, por exemplo pessoa['id'] recebe um valor digitado pelo usuário, e assim por diante
+        pessoa['id'] = input("Qual o seu id?  ")
+        #Verifica se o dado é um número, caso não seja pede pra inserir um número, mas da opção para o usuário retornar ao menu
+        if(pessoa['id'].isdigit()):
+            pessoa['nome'] = input("Qual o seu nome? ")
+            pessoa['contato'] = input("Qual o seu contato? ")
+            #Aqui deixei os caracteres tudo minusculo, para facilitar na consulta através da atividade...
+            pessoa['atividade'] = input("Qual a sua atividade? ").lower()
+            #Cada ciclo dos dados inseridos é jogado na lista_contatos
+            lista_contatos.append(pessoa.copy())
+        else:
+            print("Insira um número..")
+            break
+        sair = input("Deseja cadastrar mais? S ou N ")
+        if(sair == "N" or sair == "n"):
+            print("Saindo do cadastro de contato...")
+            break
+        elif(sair == "S" or sair == "s"):
+            print("Continuando a cadastrar contato...")
+            continue
+        else:
+            print("Favor insira um valor válido...")
+
+def consultar_contatos():
+    while(True):
+        print("===============Consultar Contatos===============")
+        print("1. Consultar todos os contatos.")
+        print("2. Consultar por Id.")
+        print("3. Consultar por Setor.")
+        print("4. Retornar ao menu")
+        escolha_opcao = input("Seleciona uma opção: ")
+
+        if(escolha_opcao == "1"):
+            #Percorre todos os contatos da lista
+            print("====Consulta geral de cadastro====")
+            for dados in lista_contatos:
+                print("==================================")
+                for chave, valor in dados.items():
+                    print(f"{chave}: {valor}")
+
+        elif(escolha_opcao == "2"):
+            #Pede para o usuário inserir um id
+            while(True):
+                verificar_id = input("Insira um id: ")
+                for verificar in lista_contatos:
+                    if (verificar_id == verificar['id']):
+                        print(f"Id: {verificar['id']}")
+                        print(f"Nome: {verificar['nome']}")
+                        print(f"Contato: {verificar['contato']}")
+                        print(f"Atividade: {verificar['atividade']}")
+                        break
+                    if(verificar_id != verificar['id']):
+                        print("Id inválido..")
+                        continue
+                if(verificar_id == verificar['id']):
+                    break
+        elif (escolha_opcao == "3"):
+            verificar_por_atividade = input("Insira á Atividade: ").lower()
+            for verificar in lista_contatos:
+                print("==================================")
+                if (verificar_por_atividade == verificar['atividade']):
+                    print(f" Id:{verificar['id']} "
+                          f"\n nome: {verificar['nome']} "
+                          f"\n Contato: {verificar['contato']} "
+                          f"\n Atividade: {verificar['atividade']}")
+        elif(escolha_opcao == "4"):
+            print("Retornanado ao menu...")
+            break
+        else:
+            print("Insira um valor válido")
+            continue
+
+def remover_contato():
+        while(True):
+            remove = input("Qual o id a ser removido? ")
+            for remove_pessoa in lista_contatos:
+                if(remove_pessoa['id'] == remove):
+                    lista_contatos.remove(remove_pessoa)
+                    print("Usuário removido com sucesso")
+                    break
+            if (remove_pessoa['id'] == remove):
+                break
+            else:
+                print("Insira um id existente...")
+while(True):
+    print(" ___________________________________________________________ ")
+    print("|-----Bem vindo a lista de contato do Mateus Gil Tavares----|")
+    print("|-----------------------MENU PRINCIPAL----------------------|")
+    print("|------------------Escolha a opção desejada:----------------|")
+    print("|                      1.Cadastrar contato                  |")
+    print("|                      2.Consultar contato                  |")
+    print("|                      3.Remover contato                    |")
+    print("|                      4.Sair                               |")
+    print("|___________________________________________________________|")
+    print("|___________________________________________________________|")
+    selecione_opcao = int(input("Selecione uma opção: "))
+    if(selecione_opcao == 1):
+        while(True):
+            cadastrar_contato()
+            sair_ir_menu = input("Deseja retornar para o menu: [S/N]")
+            if(sair_ir_menu == "S" or sair_ir_menu == "s"):
+                break
+    elif(selecione_opcao == 2):
+        consultar_contatos()
+    elif(selecione_opcao == 3):
+        remover_contato()
+    elif(selecione_opcao == 4):
+        print("Saindo do programa....")
+        break
+    else:
+        print("Selecione uma opção válida")
+        continue

@@ -1,0 +1,94 @@
+escolha_madeira = ""
+calculo_madeira = 0
+def escolha_tipo():
+    global tipo_madeira
+    while(True):
+        print("PIN - Tora de pinheiro")
+        print("PER - Tora de Peroba")
+        print("MOG - Tora de Mogno")
+        print("IPE - Tora de Ipê")
+        print("IMB - Tora de Imbuia")
+        escolha_madeira = input("Entre com o tipo de madeira desejado: ")
+        if(escolha_madeira == "PIN" or escolha_madeira == "pin"):
+            tipo_madeira = 150.40
+            print(f'Preço da madeira pinheiro: {tipo_madeira}')
+            break
+        elif(escolha_madeira == "PER" or escolha_madeira == "per"):
+            tipo_madeira = 170.20
+            print(f'Preço da madeira peroba: {tipo_madeira}')
+            break
+        elif(escolha_madeira == "MOG" or escolha_madeira == "mog"):
+            tipo_madeira = 190.90
+            print(f'Preço da madeira mogno: {tipo_madeira}')
+            break
+        elif(escolha_madeira == "IPE" or escolha_madeira == "ipe"):
+            tipo_madeira = 210.10
+            print(f'Preço da madeira ipê: {tipo_madeira}')
+            break
+        elif(escolha_madeira == "IMB" or escolha_madeira == "imb"):
+            tipo_madeira = 220.70
+            print(f'Preço da madeira de Imbuia: {tipo_madeira}')
+            break
+        else:
+            print("Madeira inexistente, selecione os modelos acima")
+
+def qtd_toras():
+    global quantidade_toras
+    global desconto
+    while(True):
+        try:
+            quantidade_toras = int(input("Quantos m3 de tora você deseja? "))
+            if (quantidade_toras > 2000):
+                print(f"Não aceitamos essa quantidade de tora: {quantidade_toras}")
+            elif (quantidade_toras >= 1000 and quantidade_toras <= 2000):
+                desconto = (quantidade_toras * tipo_madeira) * (16/100)
+                break
+            elif (quantidade_toras >= 500 and quantidade_toras < 1000):
+                desconto = (quantidade_toras * tipo_madeira) * (9/100)
+                break
+            elif (quantidade_toras >= 100 and quantidade_toras < 500):
+                desconto = (quantidade_toras * tipo_madeira) * (4/100)
+                break
+            else:
+                print("Não há desconto")
+                break
+        except ValueError:
+            print("Ops, digite um valor númerico...")
+
+
+    return print(f"Quantidade de toras: {quantidade_toras}. Desconto de: {desconto}")
+
+
+def tipo_transporte():
+    print("1 - Transporte Rodoviário - R$ 1000.00")
+    print("2 - Transporte Ferroviário - R$ 2000.00")
+    print("3 - Transporte Hidroviário - R$ 2500.00")
+
+    global valor_transporte
+    while(True):
+        tipo_transporte = int(input("Insira o tipo de transporte: "))
+        if(tipo_transporte == 1):
+            valor_transporte = 1000.00
+            break
+        elif(tipo_transporte == 2):
+            valor_transporte = 2000.00
+            break
+        elif(tipo_transporte == 3):
+            valor_transporte = 2500.00
+            break
+        else:
+            print("Insira um valor válido")
+
+    return print(f"O valor do transporte é: {valor_transporte}")
+
+
+
+#((tipoMadeira * qtdToras)*(1-desconto)) + transporte
+print("|-----Vendas de madeiras do Mateus Gil Tavares-----|")
+escolha_tipo()
+qtd_toras()
+tipo_transporte()
+
+valor = ((tipo_madeira * quantidade_toras) - desconto) + valor_transporte
+
+print(f"Valor total da compra:{valor} ")

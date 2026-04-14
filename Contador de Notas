@@ -1,0 +1,35 @@
+valor = int(input("Digite um valor: "))
+valor_quebra = valor
+nota_100 = 0
+nota_50 = 0
+nota_20 = 0
+nota_10 = 0
+nota_5 = 0
+nota_1 = 0
+while(valor_quebra != 0):
+    if (valor_quebra >= 100):
+        valor_quebra -= 100
+        nota_100 += 1
+    elif (valor_quebra >= 50):
+        valor_quebra -= 50
+        nota_50 += 1
+    elif(valor_quebra >= 20):
+        valor_quebra -= 20
+        nota_20 += 1
+    elif(valor_quebra >= 10):
+        valor_quebra -= 10
+        nota_10 += 1
+    elif(valor_quebra >= 5):
+        valor_quebra -= 5
+        nota_5 += 1
+    elif(valor_quebra >= 1):
+        valor_quebra -= 1
+        nota_1 += 1
+    else:
+        print("Valor invalido")
+print(f"Nota de 100: {nota_100}")
+print(f"Nota de 50: {nota_50}")
+print(f"Nota de 20: {nota_20}")
+print(f"Nota de 10: {nota_10}")
+print(f"Nota de 5: {nota_5}")
+print(f"Nota de 1: {nota_1}")

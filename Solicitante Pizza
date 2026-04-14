@@ -1,0 +1,65 @@
+print("|----------------------Pizzaria do Mateus Gil Tavares---------------------|")
+print("|----------------------------Seja Bem Vindo =)----------------------------|")
+print("|-------------------------------------------------------------------------|")
+print("|---|   Tamanho    |-----| Pizzas Salgada (PS) |-----| Pizza Docê(PD) |---|")
+print("|---|      P       |-----|       R$30.00       |-----|     R$34.00    |---|")
+print("|---|      M       |-----|       R$45.00       |-----|     R$48.00    |---|")
+print("|---|      G       |-----|       R$60.00       |-----|     R$66.00    |---|")
+print("|-------------------------------------------------------------------------|")
+#Soma o valor total do pedido
+valor_total = 0
+#São as variáveis que salvam o valor do tamanho conforme o sabor da pizza
+pizza_salgada_p = 30.00
+pizza_salgada_m = 45.00
+pizza_salgada_g = 60.00
+pizza_doce_p = 34.00
+pizza_doce_m = 48.00
+pizza_doce_g = 66.00
+while(True):
+    tamanho_pizza = ""
+    #
+    sabor_pizza = input("Insira o sabor da Pizza 'ps' para salgada ou 'pd' para doce")
+    if(sabor_pizza == "PS" or sabor_pizza == "ps"):
+        while(True):
+            tamanho_pizza = input("Qual o tamanho da pizza salgada? P/M/G")
+            if(tamanho_pizza == "P" or tamanho_pizza == "p"):
+                print(f"Você pediu uma pizza salgada tamanho P no valor de: {pizza_salgada_p}")
+                valor_total += pizza_salgada_p
+                break
+            elif(tamanho_pizza == "M" or tamanho_pizza == "m"):
+                print(f"Você pediu uma pizza salgada tamanho M no valor de: {pizza_salgada_m}")
+                valor_total += pizza_salgada_m
+                break
+            elif(tamanho_pizza == "G" or tamanho_pizza == "g"):
+                print(f"Você pediu uma pizza salgada tamanho G no valor de: {pizza_salgada_g}")
+                valor_total += pizza_salgada_g
+                break
+            else:
+                print("Favor insira um tamanho válido")
+    elif(sabor_pizza == "PD" or sabor_pizza == "pd"):
+        while(True):
+            tamanho_pizza = input("Qual o tamanho da pizza doce? P/M/G")
+            if (tamanho_pizza == "P" or tamanho_pizza == "p"):
+                print(f"Você pediu uma pizza doce tamanho P no valor de: {pizza_doce_p}")
+                valor_total += pizza_doce_p
+                break
+            elif (tamanho_pizza == "M" or tamanho_pizza == "m"):
+                print(f"Você pediu uma pizza doce tamanho P no valor de: {pizza_doce_m}")
+                valor_total += pizza_doce_m
+                break
+            elif (tamanho_pizza == "G" or tamanho_pizza == "g"):
+                print(f"Você pediu uma pizza doce tamanho P no valor de: {pizza_doce_g}")
+                valor_total += pizza_doce_g
+                break
+            else:
+                print("Favor insira um tamanho válido")
+    else:
+        print("Insira um sabor válido")
+
+    if(tamanho_pizza == "p" or tamanho_pizza == "P" or tamanho_pizza == "m" or tamanho_pizza == "M" or tamanho_pizza == "g" or tamanho_pizza == "G"):
+        continuar_para = input("Deseja continuar? S ou N")
+        if(continuar_para == "S" or continuar_para == "s"):
+            continue
+        elif(continuar_para == "N" or continuar_para == "n"):
+            break
+print(f"O valor total da compra deu: {valor_total}")
